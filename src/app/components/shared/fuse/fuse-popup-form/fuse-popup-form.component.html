@@ -1,0 +1,50 @@
+<div class="dialog-content-wrapper">
+  <mat-toolbar matDialogTitle class="mat-accent m-0">
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+      <span class="title dialog-title">{{ ('MODAL.' + type | translate) + ' ' + (title | translate) }}</span>
+      <button mat-icon-button (click)="onClose()" aria-label="Close dialog">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row class="toolbar-bottom py-16" fxLayout="column" fxLayoutAlign="center center">
+      <img [src]="img" class="avatar contact-avatar huge m-0" [alt]="img" />
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div mat-dialog-content class="p-24 pb-0 m-0" fusePerfectScrollbar>
+    <app-formly-form [form]="popupForm" [fields]="fields" [model]="model"></app-formly-form>
+  </div>
+
+  <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+    <button
+      *ngIf="showDelete()"
+      mat-button
+      class="mr-8"
+      (click)="onDelete()"
+      aria-label="Delete"
+      matTooltip="Delete"
+      translate="MODAL.DELETE"
+    ></button>
+
+    <button
+      *ngIf="showCreate()"
+      mat-button
+      class="save-button"
+      (click)="onSubmit(popupForm.value)"
+      [disabled]="popupForm.invalid"
+      aria-label="SAVE"
+      translate="MODAL.CREATE"
+    ></button>
+
+    <button
+      *ngIf="showEdit()"
+      mat-button
+      class="save-button"
+      (click)="onSubmit(popupForm.value)"
+      [disabled]="popupForm.invalid"
+      aria-label="EDIT"
+      translate="MODAL.EDIT"
+    ></button>
+  </div>
+</div>

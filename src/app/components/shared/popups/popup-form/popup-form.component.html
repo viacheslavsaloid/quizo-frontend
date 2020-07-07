@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>{{ ('MODAL.' + type | translate) + ' ' + (title | translate) }}</h1>
+<div mat-dialog-content>
+  <app-formly-form
+    [fields]="fields"
+    [model]="model"
+    [showDelete]="showDelete()"
+    (submited)="onSubmit($event)"
+    (deleted)="onDelete()"
+  ></app-formly-form>
+</div>

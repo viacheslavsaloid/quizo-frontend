@@ -1,0 +1,28 @@
+@import 'src/@fuse/scss/fuse';
+
+#sign-up-form {
+  width: 384px;
+  max-width: 384px;
+  padding: 32px;
+  text-align: center;
+  @include mat-elevation(16);
+
+  @include media-breakpoint('xs') {
+    padding: 24px;
+    width: 100%;
+  }
+
+  .logo {
+    width: 128px;
+    margin: 32px auto;
+  }
+
+  .sign-in {
+    margin: 32px auto 24px auto;
+    font-weight: 600;
+
+    .text {
+      margin-right: 8px;
+    }
+  }
+}

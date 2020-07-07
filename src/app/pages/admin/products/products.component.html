@@ -1,0 +1,74 @@
+<div id="products" class="page-layout carded fullwidth inner-scroll">
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg accent"></div>
+  <!-- / TOP BACKGROUND -->
+
+  <!-- CENTER -->
+  <div class="center">
+    <!-- HEADER -->
+    <div
+      class="header accent"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      fxLayout.gt-sm="row"
+      fxLayoutAlign.gt-sm="space-between center"
+    >
+      <!-- APP TITLE -->
+      <div class="logo mb-24 mb-md-0" fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon class="logo-icon s-32 mr-16" [@animate]="{ value: '*', params: { delay: '50ms', scale: '0.2' } }">
+          shopping_basket
+        </mat-icon>
+        <span class="logo-text h1" [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }">
+          Products
+        </span>
+      </div>
+      <!-- / APP TITLE -->
+
+      <!-- SEARCH -->
+      <div class="search-wrapper mx-32 mx-md-0">
+        <app-fuse-table-search-bar [searchInput]="searchInput"></app-fuse-table-search-bar>
+      </div>
+      <!-- / SEARCH -->
+
+      <!-- ADD BUTTON -->
+      <button mat-raised-button class="add-product-button fuse-white mt-24 mt-md-0" (click)="onClick()">
+        <span>ADD NEW PRODUCT</span>
+      </button>
+      <!-- / ADD BUTTON -->
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT CARD -->
+    <div class="content-card">
+      <app-fuse-table #table class="products" [limit]="10" [count]="25" [columns]="columns" [rows]="rows$ | async">
+        <ng-template #expandedRow let-row="row">
+          <div class="expanded" fxLayout="row" fxLayoutAlign="start center">
+            <span class="title">{{ 'TABLE.PRODUCTS.COMPANY' | translate }}</span>
+            <span class="description">{{ row.company }}</span>
+          </div>
+          <div class="expanded" fxLayout="row" fxLayoutAlign="start center">
+            <span class="title">{{ 'TABLE.PRODUCTS.NAME' | translate }}</span>
+            <span class="description">{{ row.name }}</span>
+          </div>
+          <div class="expanded" fxLayout="row" fxLayoutAlign="start center">
+            <span class="title">{{ 'TABLE.PRODUCTS.ID' | translate }}</span>
+            <span class="description">{{ row.id }}</span>
+          </div>
+        </ng-template>
+      </app-fuse-table>
+    </div>
+    <!-- / CONTENT CARD -->
+  </div>
+  <!-- / CENTER -->
+</div>
+
+<ng-template #arrowCell let-row="row" let-expanded="expanded">
+  <a
+    href="javascript:void(0)"
+    [class.datatable-icon-right]="!expanded"
+    [class.datatable-icon-down]="expanded"
+    title="Expand/Collapse Row"
+    (click)="toggleExpandRow(row)"
+  >
+  </a>
+</ng-template>

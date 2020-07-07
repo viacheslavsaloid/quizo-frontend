@@ -1,0 +1,31 @@
+<form [className]="className" [formGroup]="form" (submit)="onSubmit()">
+  <ng-content select="[header]"></ng-content>
+
+  <p class="title" *ngIf="title" [translate]="title"></p>
+
+  <formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>
+
+  <ng-content select="[body]"></ng-content>
+
+  <div class="actions">
+    <app-button
+      *ngIf="showSubmitButton"
+      [color]="submitColor"
+      [className]="submitClassName"
+      [type]="submitType"
+      [disabled]="form.invalid"
+      [content]="submitContent"
+    ></app-button>
+
+    <app-button
+      *ngIf="showDeleteButton"
+      [color]="deleteColor"
+      [className]="deleteClassName"
+      [type]="deleteType"
+      (click)="onDelete()"
+      [content]="deleteContent"
+    ></app-button>
+  </div>
+
+  <ng-content select="[footer]"></ng-content>
+</form>

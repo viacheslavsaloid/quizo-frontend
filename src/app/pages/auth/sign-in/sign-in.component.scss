@@ -1,0 +1,43 @@
+@import 'src/@fuse/scss/fuse';
+
+#sign-in-form {
+  width: 384px;
+  max-width: 384px;
+  padding: 32px;
+  text-align: center;
+  @include mat-elevation(16);
+
+  @include media-breakpoint('xs') {
+    padding: 24px;
+    width: 100%;
+  }
+
+  .remember-forgot-password {
+    font-size: 13px;
+    margin-top: 8px;
+
+    .remember-me {
+      margin-bottom: 16px;
+    }
+
+    .forgot-password {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+  }
+
+  .logo {
+    width: 128px;
+    margin: 32px auto;
+  }
+
+  .sign-up {
+    margin: 32px auto 24px auto;
+    font-weight: 600;
+
+    .text {
+      margin-right: 8px;
+    }
+  }
+}

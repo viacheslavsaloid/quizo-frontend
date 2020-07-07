@@ -1,0 +1,22 @@
+@import '@fuse/scss/core';
+
+@import 'node_modules/ngx-toastr/toastr';
+
+@import 'app/app.theme';
+
+.ngx-datatable.scroll-vertical {
+  height: 30vh;
+}
+
+mat-chip {
+  display: flex;
+  padding: 5px 7.5px;
+  border-radius: 13px;
+}
+
+ngx-datatable {
+  height: 100%;
+  .visible {
+    height: 100%;
+  }
+}

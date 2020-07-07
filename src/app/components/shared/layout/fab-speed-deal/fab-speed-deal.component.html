@@ -1,0 +1,13 @@
+<eco-fab-speed-dial #myFab [direction]="direction" [animationMode]="animationMode" [fixed]="fixed">
+  <eco-fab-speed-dial-trigger [spin]="spin">
+    <button mat-fab (click)="trigger.func()">
+      <mat-icon class="spin360">{{ trigger.icon }}</mat-icon>
+    </button>
+  </eco-fab-speed-dial-trigger>
+
+  <eco-fab-speed-dial-actions>
+    <button mat-mini-fab *ngFor="let item of items; trackBy: trackByFn" (click)="item.func()">
+      <mat-icon>{{ item.icon }}</mat-icon>
+    </button>
+  </eco-fab-speed-dial-actions>
+</eco-fab-speed-dial>
