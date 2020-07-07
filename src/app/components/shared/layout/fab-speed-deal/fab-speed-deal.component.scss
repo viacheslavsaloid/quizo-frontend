@@ -1,0 +1,13 @@
+eco-fab-speed-dial {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+
+  button {
+    background-color: white;
+
+    mat-icon {
+      color: black;
+    }
+  }
+}

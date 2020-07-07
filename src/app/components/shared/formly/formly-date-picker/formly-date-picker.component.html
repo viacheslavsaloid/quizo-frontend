@@ -1,0 +1,9 @@
+<input
+  matInput
+  [matDatepicker]="datePicker"
+  (click)="datePicker.open()"
+  [formControl]="formControl"
+  [formlyAttributes]="field"
+  readonly
+/>
+<mat-datepicker #datePicker></mat-datepicker>

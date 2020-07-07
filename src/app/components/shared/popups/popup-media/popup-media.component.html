@@ -1,0 +1,11 @@
+<img *ngIf="isPhoto()" [src]="media" alt="" />
+
+<video *ngIf="isVideo()" controls autoplay>
+  <source [src]="media" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+<audio *ngIf="isAudio()" controls>
+  <source [src]="media" type="audio/mp3" />
+  Your browser does not support the audio tag.
+</audio>

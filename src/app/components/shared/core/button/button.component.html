@@ -1,0 +1,16 @@
+<button
+  mat-raised-button
+  [type]="type"
+  [color]="color"
+  [class]="class + ' ' + color"
+  [disabled]="disabled"
+  [ngSwitch]="loading"
+  (click)="onClick($event)"
+>
+  <mat-spinner *ngSwitchCase="true" diameter="20"></mat-spinner>
+  <ng-container *ngSwitchCase="false">
+    <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
+    {{ title }}
+    <ng-content></ng-content>
+  </ng-container>
+</button>

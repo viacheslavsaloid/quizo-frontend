@@ -1,0 +1,12 @@
+{
+  "FORM": {
+    "EMAIL": "Email",
+    "EMAIL_PLACEHOLDER": "Enter email",
+    "PASSWORD": "Password",
+    "PASSWORD_PLACEHOLDER": "Enter Password"
+  },
+
+  "VALIDATORS": {
+    "EMAIL": "Incorrect email"
+  }
+}
