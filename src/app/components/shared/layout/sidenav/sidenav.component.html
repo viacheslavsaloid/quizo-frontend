@@ -1,0 +1,23 @@
+<mat-nav-list>
+  <div class="list-item header" (click)="onBurgerClick()">
+    <mat-icon>{{ showTitle ? 'menu_open' : 'menu' }}</mat-icon>
+    <p *ngIf="showTitle">{{ 'SIDENAV.APP' | translate }}</p>
+  </div>
+
+  <div class="pages">
+    <a
+      class="list-item"
+      *ngFor="let nav of navLinks; trackBy: trackByFn"
+      [routerLink]="nav.fullPath"
+      routerLinkActive="active"
+    >
+      <mat-icon>{{ nav.icon }}</mat-icon>
+      <p *ngIf="showTitle">{{ 'SIDENAV.' + nav.title | translate }}</p></a
+    >
+  </div>
+
+  <div class="list-item footer" (click)="onExitClick()">
+    <mat-icon>exit_to_app</mat-icon>
+    <p *ngIf="showTitle">{{ 'SIDENAV.EXIT' | translate }}</p>
+  </div>
+</mat-nav-list>

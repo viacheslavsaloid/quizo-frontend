@@ -1,0 +1,22 @@
+<app-typography *ngIf="to.label">{{ to.label | translate }}</app-typography>
+<div *ngFor="let field of field.fieldGroup; let i = index; trackBy: trackByFn" class="list-item">
+  <span class="index" *ngIf="to.showIndex">№ {{ i + 1 }}.</span>
+  <formly-field [field]="field"></formly-field>
+  <mat-icon (click)="to.deleteClicked ? to.deleteClicked(field) : remove(i)" *ngIf="to.showDeleteButton"
+    >clear
+  </mat-icon>
+  <div class="actions" *ngIf="to.actions">
+    <mat-divider></mat-divider>
+    <app-button
+      *ngFor="let action of to.actions; trackBy: trackByFn"
+      [className]="action.color"
+      (click)="action.clicked(field)"
+    >
+      {{ action.title }}
+    </app-button>
+  </div>
+</div>
+<app-button color="primary" type="submit" *ngIf="to.showSubmitButton">{{ 'FORM.SUBMIT' | translate }}</app-button>
+<app-button color="secondary" (click)="add()" *ngIf="to.showAddButton && to.limit > field.fieldGroup.length">{{
+  to.placeholder | translate
+}}</app-button>

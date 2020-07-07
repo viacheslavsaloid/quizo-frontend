@@ -1,0 +1,53 @@
+@mixin sidenav-theme($app-theme) {
+  // Extracts the color and typography configurations from the theme.
+  $app-primary: map-get($app-theme, primary);
+
+  mat-nav-list .pages a.active {
+    background-color: mat-color($app-primary);
+  }
+}
+
+mat-nav-list {
+  padding-top: 0px;
+  background-color: #2d323e;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .pages {
+    flex: 1;
+  }
+
+  .list-item {
+    display: flex;
+    align-items: center;
+    opacity: 0.5;
+    padding: 0 16px;
+
+    height: 56px;
+
+    color: white;
+
+    p {
+      margin: 0px;
+      padding-left: 16px;
+      font-size: 16px;
+    }
+
+    &.active,
+    &:hover {
+      opacity: 1;
+    }
+
+    &.header,
+    &.footer {
+      opacity: 1;
+      height: 64px !important;
+      background-color: #1e2129;
+    }
+
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "LANGUAGES": {
+    "RU": "Russian",
+    "EN": "English"
+  },
+  "FORM": {
+    "EMAIL": "Email",
+    "EMAIL_PLACEHOLDER": "Enter email",
+    "PASSWORD": "Password",
+    "PASSWORD_PLACEHOLDER": "Enter Password",
+
+    "SUBMIT": "Submit",
+    "DELETE": "Delete"
+  },
+  "VALIDATORS": {
+    "EMAIL": "Incorrect email"
+  },
+  "MODAL": {
+    "CREATE": "Create",
+    "EDIT": "Edit"
+  },
+  "ERROR": {
+    "STATUS": "Status: {{ status }}",
+    "0": "No response from server",
+    "404": "Page didn'd found"
+  },
+  "SUCCESS": {
+    "STATUS": "Status: {{ status }}",
+    "PATCH": "Patch",
+    "POST": "Post",
+    "PUT": "Put",
+    "DELETE": "Delete"
+  }
+}

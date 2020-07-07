@@ -1,0 +1,22 @@
+{
+  "SIDENAV": {
+    "APP": "Angular Starter",
+    "DASHBOARD": "Доска",
+    "HOME": "Главная",
+    "SETTINGS": "Настройки",
+    "EXIT": "Выход"
+  },
+  "TABS": {
+    "FORM": "Форма",
+    "LIST": "Список"
+  },
+  "FORM": {
+    "FIRST_NAME": "Имя",
+    "FIRST_NAME_PLACEHOLDER": "Введите имя",
+    "LAST_NAME": "Фамилия",
+    "LAST_NAME_PLACEHOLDER": "Введите фамилию"
+  },
+  "MODAL": {
+    "USER": "Пользователя"
+  }
+}

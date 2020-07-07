@@ -1,0 +1,16 @@
+<form [formGroup]="form" [class]="className" (submit)="onSubmit()">
+  <app-typography [data]="translateTitle"></app-typography>
+
+  <ng-content select="[formly-header]"></ng-content>
+
+  <formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>
+
+  <ng-content select="[formly-body]"></ng-content>
+
+  <div class="actions">
+    <app-button *ngIf="showSubmitButton()" type="submit" [color]="submitColor" [text]="submitText"></app-button>
+    <app-button *ngIf="showDeleteButton()" (click)="onDelete()" [color]="deleteColor" [text]="deleteText"></app-button>
+  </div>
+
+  <ng-content select="[formly-footer]"></ng-content>
+</form>

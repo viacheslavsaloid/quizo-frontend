@@ -1,0 +1,13 @@
+@mixin href-theme($app-theme) {
+  // Extracts the color and typography configurations from the theme.
+  $app-primary: map-get($app-theme, primary);
+
+  a {
+    color: mat-color($app-primary);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

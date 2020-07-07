@@ -1,0 +1,17 @@
+<div [ngSwitch]="type" [ngClass]="{ 'disable-margin': !margin }">
+  <ng-container *ngSwitchCase="'h'" [ngSwitch]="size">
+    <h1 *ngSwitchCase="1" class="mat-h1" [translate]="data"></h1>
+    <h2 *ngSwitchCase="2" class="mat-h2" [translate]="data"></h2>
+    <h3 *ngSwitchCase="3" class="mat-h3" [translate]="data"></h3>
+    <h4 *ngSwitchCase="4" class="mat-h4" [translate]="data"></h4>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'d'">
+    <p [class]="'mat-display-' + size" [translate]="data"></p>
+  </ng-container>
+
+  <ng-container [ngSwitch]="size" *ngSwitchCase="'p'">
+    <p *ngSwitchDefault [class]="'mat-body-' + size" [translate]="data"></p>
+    <span *ngSwitchCase="3" class="mat-caption" [translate]="data"> </span>
+  </ng-container>
+</div>
