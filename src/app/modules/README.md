@@ -1,4 +1,4 @@
 Folder for modules
 
-root.module.ts
+core.module.ts
 shared.module.ts

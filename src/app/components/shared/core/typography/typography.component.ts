@@ -1,4 +1,7 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+
+export type TypographyType = 'h' | 'p' | 'd';
+export type TypographySize = '1' | '2' | '3' | '4' | '5' | '6';
 
 @Component({
   selector: 'app-typography',
@@ -6,11 +9,11 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
   styleUrls: ['./typography.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TypographyComponent implements OnInit {
-  @Input() public type = 'h';
-  @Input() public size = '3 ';
+export class TypographyComponent {
+  @Input() public type: TypographyType = 'h';
+  @Input() public size: TypographySize = '3';
 
-  constructor() {}
+  @Input() public margin: boolean = true;
 
-  ngOnInit() {}
+  @Input() public data: string;
 }

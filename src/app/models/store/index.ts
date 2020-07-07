@@ -1,1 +1,1 @@
-export * from './state.model';
+export * from './configs.state';

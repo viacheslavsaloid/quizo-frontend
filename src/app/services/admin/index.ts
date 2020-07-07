@@ -1,5 +1,5 @@
-import { ContactsService } from './contacts/contacts.service';
+import { UsersService } from './users/users.service';
 
-export * from './contacts/contacts.service';
+export * from './users/users.service';
 
-export const ADMIN_SERVICES = [ContactsService];
+export const ADMIN_SERVICES = [UsersService];

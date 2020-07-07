@@ -1,0 +1,8 @@
+<mat-toolbar class="mat-elevation-z2">
+  <div *ngIf="showBurger">
+    <app-button color="primary" [loading]="false" icon="menu" (click)="onBurgerClick()"></app-button>
+  </div>
+  <div>
+    <ng-content></ng-content>
+  </div>
+</mat-toolbar>

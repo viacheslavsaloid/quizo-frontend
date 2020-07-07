@@ -1,0 +1,32 @@
+:host {
+  display: block;
+  height: 100%;
+
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+    overflow: hidden;
+
+    app-header {
+      z-index: 2;
+    }
+
+    .pages-wrapper {
+      flex: 1;
+      overflow: auto;
+
+      padding: 15px;
+    }
+  }
+
+  mat-sidenav-container {
+    height: 100%;
+  }
+
+  mat-sidenav-content {
+    height: -moz-available;
+    height: -webkit-fill-available;
+  }
+}

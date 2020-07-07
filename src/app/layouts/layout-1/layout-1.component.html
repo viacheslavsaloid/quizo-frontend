@@ -1,0 +1,21 @@
+<mat-sidenav-container autosize>
+  <mat-sidenav #sidenav [mode]="mode" [opened]="isOpen">
+    <app-sidenav
+      [navLinks]="navLinks"
+      [showTitle]="showTitle"
+      (burgerClicked)="onBurgerClick()"
+      (exitClicked)="onExitClick()"
+    ></app-sidenav>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="content">
+    <div class="content-wrapper">
+      <app-header [showBurger]="showBurger" (burgerClicked)="onBurgerClick()">
+        <ng-content select="[layout-header]"></ng-content>
+      </app-header>
+      <div class="pages-wrapper">
+        <ng-content select="[layout-body]"></ng-content>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -9,7 +9,7 @@
     <mat-divider></mat-divider>
     <app-button
       *ngFor="let action of to.actions; trackBy: trackByFn"
-      [color]="action.color"
+      [className]="action.color"
       (click)="action.clicked(field)"
     >
       {{ action.title }}

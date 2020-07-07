@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { MultiTranslateHttpLoader } from 'ngx-translate-multi-http-loader';
 
 /*
  * глобальные конфиги для NGX-TRANSLATE
@@ -9,7 +9,11 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
  */
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
-  return new TranslateHttpLoader(httpClient);
+  return new MultiTranslateHttpLoader(httpClient, [
+    { prefix: './assets/i18n/core/', suffix: '.json' },
+    { prefix: './assets/i18n/auth/', suffix: '.json' },
+    { prefix: './assets/i18n/admin/', suffix: '.json' },
+  ]);
 }
 
 export const TRANSLATE_CONFIGS = {
@@ -18,5 +22,4 @@ export const TRANSLATE_CONFIGS = {
     useFactory: HttpLoaderFactory,
     deps: [HttpClient],
   },
-  defaultLanguage: 'ru',
 };

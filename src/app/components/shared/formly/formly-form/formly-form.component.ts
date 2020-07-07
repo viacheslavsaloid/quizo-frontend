@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { FormlyFormOptions } from '@ngx-formly/core';
 import { FormGroup } from '@angular/forms';
-import { generateFormlyFields } from 'src/app/utils/formly';
+import { AppFormlyService } from 'src/app/services/core/app-formly/app-formly.service';
 
 @Component({
   selector: 'app-formly-form',
@@ -10,42 +10,41 @@ import { generateFormlyFields } from 'src/app/utils/formly';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormlyFormComponent {
-  @Output() private _submited = new EventEmitter();
-  @Output() private _deleted = new EventEmitter();
+  @Output() public submited: EventEmitter<boolean> = new EventEmitter();
+  @Output() public deleted: EventEmitter<boolean> = new EventEmitter();
 
-  @Input() public form = new FormGroup({});
+  @Input() public form: FormGroup = new FormGroup({});
 
-  @Input() public showDelete = true;
-  @Input() public showSubmit = true;
+  @Input() public showDelete: boolean = true;
+  @Input() public showSubmit: boolean = true;
 
-  @Input() public className = '';
+  @Input() public className: string = '';
 
-  @Input() public model = {};
-  @Input() public title = '';
+  @Input() public translateTitle: string;
+  @Input() public model: object = {};
   @Input() public type: string;
-
   @Input() public options: FormlyFormOptions = {};
 
-  @Input() public submitText: string;
+  @Input() public submitText: string = 'FORM.SUBMIT';
+  @Input() public submitColor: string = 'primary';
+
+  @Input() public deleteText: string = 'FORM.DELETE';
+  @Input() public deleteColor: string = 'warn';
 
   public _fields;
   @Input('fields')
-  set fields(fields: object) {
-    this._fields = generateFormlyFields({ fields, type: this.type });
+  public set fields(fields: object) {
+    this._fields = this._appFormlyService.generateFormlyFields({ fields, type: this.type });
   }
-  get fields() {
+  public get fields() {
     return this._fields;
   }
 
-  constructor() {}
+  constructor(private _appFormlyService: AppFormlyService) {}
 
-  public onSubmit = () => this._submited.emit(this.form.value);
-  public onDelete = () => this._deleted.emit(this.form.value);
+  public onSubmit = () => this.submited.emit(this.form.value);
+  public onDelete = () => this.deleted.emit(this.form.value);
 
-  public get showSubmitButton() {
-    return this.showSubmit && this._submited.observers.length;
-  }
-  public get showDeleteButton() {
-    return this.showDelete && this._deleted.observers.length;
-  }
+  public showSubmitButton = () => this.showSubmit && this.submited.observers.length;
+  public showDeleteButton = () => this.showDelete && this.deleted.observers.length;
 }

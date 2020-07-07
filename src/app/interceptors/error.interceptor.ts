@@ -1,27 +1,25 @@
 import { Injectable, Injector } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse } from '@angular/common/http';
-import { NotificationsService } from '../services/root';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
+import { AppNotificationService } from '../services/core';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-  private _notificationsService: NotificationsService;
+  private _appNotificationService: AppNotificationService;
 
   constructor(private _injector: Injector) {
-    // hack for inject service after it imported to root.module.ts
+    // hack for inject service after it imported to core.module.ts
     setTimeout(() => {
-      this._notificationsService = this._injector.get(NotificationsService);
+      this._appNotificationService = this._injector.get(AppNotificationService);
     });
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
-      retry(2),
+      retry(1),
       catchError((error: HttpErrorResponse) => {
-        if (error.status !== 401) {
-          this._notificationsService.showError(error);
-        }
+        this._appNotificationService.showError(error.status, error.status);
         return throwError(error);
       })
     );

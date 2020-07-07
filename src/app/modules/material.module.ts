@@ -16,7 +16,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
@@ -27,6 +26,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
@@ -50,7 +50,6 @@ const MATERIAL_EXPORTS = [
   MatIconModule,
   MatSelectModule,
   MatButtonModule,
-  MatDialogModule,
   MatSidenavModule,
   MatToolbarModule,
   MatListModule,
@@ -61,6 +60,7 @@ const MATERIAL_EXPORTS = [
   MatChipsModule,
   MatNativeDateModule,
   MatDatepickerModule,
+  MatMenuModule,
 
   MaterialFileInputModule,
   NgxMaterialTimepickerModule,

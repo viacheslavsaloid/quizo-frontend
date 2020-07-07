@@ -1,5 +1,5 @@
-import { ContactsState } from './contacts.state';
+import { UsersState } from './users.state';
 
-export * from './contacts.state';
+export * from './users.state';
 
-export const ADMIN_STATES = [ContactsState];
+export const ADMIN_STATES = [UsersState];

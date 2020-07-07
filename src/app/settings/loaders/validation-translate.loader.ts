@@ -4,18 +4,18 @@ import { TranslateService } from '@ngx-translate/core';
 
 /*
  * Сервис для инициализации глобальных ошибок FORMLY с NGX-TRANSLATE
- * Метод init вызыватся в -> root.component.ts
+ * Метод init вызыватся в -> core.component.ts
  */
 
 @Injectable()
 export class FormlyValidationLoader {
-  constructor(private translateService: TranslateService, private formlyConfig: FormlyConfig) {}
+  constructor(private _translateService: TranslateService, private _formlyConfig: FormlyConfig) {}
 
   init(): void {
-    this.formlyConfig.addValidatorMessage('required', () => this.translateService.instant('VALIDATORS.REQUIRED'));
-    this.formlyConfig.addValidatorMessage('email', () => this.translateService.instant('VALIDATORS.EMAIL'));
-    this.formlyConfig.addValidatorMessage('autocomplete', () =>
-      this.translateService.instant('VALIDATORS.AUTOCOMPLETE')
+    this._formlyConfig.addValidatorMessage('required', () => this._translateService.instant('VALIDATORS.REQUIRED'));
+    this._formlyConfig.addValidatorMessage('email', () => this._translateService.instant('VALIDATORS.EMAIL'));
+    this._formlyConfig.addValidatorMessage('autocomplete', () =>
+      this._translateService.instant('VALIDATORS.AUTOCOMPLETE')
     );
   }
 }

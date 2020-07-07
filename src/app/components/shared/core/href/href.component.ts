@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-href',
@@ -7,6 +7,7 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HrefComponent {
-  @Input() routeTo = '';
-  @Input() activeClass = 'active';
+  @Input() routeTo: string = '';
+  @Input() activeClass: string = 'active';
+  @Input() text: string = '';
 }

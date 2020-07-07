@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthComponent } from 'src/app/containers/auth/auth.component';
 import { AUTH_ROUTES } from './auth.routes';
-import { SignInComponent, SignUpComponent, ResetPasswordComponent } from 'src/app/pages/auth';
+import { AuthPageComponent } from 'src/app/pages/auth';
+import { AuthType } from 'src/app/models/auth/auth-type';
 
 const routes: Routes = [
   {
@@ -16,15 +17,24 @@ const routes: Routes = [
       },
       {
         path: AUTH_ROUTES.SIGN_IN.path,
-        component: SignInComponent,
+        component: AuthPageComponent,
+        data: {
+          type: AuthType.SIGN_IN,
+        },
       },
       {
         path: AUTH_ROUTES.SIGN_UP.path,
-        component: SignUpComponent,
+        component: AuthPageComponent,
+        data: {
+          type: AuthType.SIGN_UP,
+        },
       },
       {
-        path: AUTH_ROUTES.RESET_PASSWORD.path,
-        component: ResetPasswordComponent,
+        path: AUTH_ROUTES.RESTORE_PASSWORD.path,
+        component: AuthPageComponent,
+        data: {
+          type: AuthType.RESTORE_PASSWORD,
+        },
       },
     ],
   },

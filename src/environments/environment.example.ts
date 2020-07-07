@@ -10,6 +10,7 @@ const authEndpoint = 'auth/';
 
 const apiEndpoint = 'api/';
 const apiVersion = 'v1/';
+const usersEndpoint = 'users/';
 
 const domain = getDomain(serverUrl);
 
@@ -18,9 +19,11 @@ export const environment = {
   serverUrl,
   apiEndpoint,
   authEndpoint,
+  usersEndpoint,
   apiUrl: `${serverUrl}${apiEndpoint}${apiVersion}`,
   authUrl: `${serverUrl}${authEndpoint}`,
   jwtWhitelist: [domain],
+  rollbarToken: 'token',
 };
 
 /*

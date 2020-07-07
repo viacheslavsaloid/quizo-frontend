@@ -1,4 +1,15 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Input,
+  EventEmitter,
+  Output,
+  ContentChild,
+  TemplateRef,
+  ElementRef,
+} from '@angular/core';
+
+import { ColumnMode } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'app-table',
@@ -7,23 +18,44 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableComponent {
-  @Input() data: [];
-  @Input() displayedColumns: any[];
+  @Output() private paged = new EventEmitter();
+  @Output() private activaded = new EventEmitter();
+  @Output() private selected = new EventEmitter();
 
-  _columns: any[];
-  get columns(): any[] {
-    return this._columns;
-  }
+  @ContentChild('expandedRow') expandedRow: TemplateRef<ElementRef>;
 
-  @Input('columns')
-  set columns(value: any[]) {
-    this._columns = value;
-    this.displayedColumns = this._columns ? this._columns.map((x) => x.prop) : [];
-  }
+  @Input() public rows: any[] = [];
+  @Input() public columns: any[] = [];
+  @Input() public loadingIndicator: boolean;
+  @Input() public reorderable: boolean;
+
+  @Input() public columnMode = ColumnMode.force;
+  @Input() public headerHeight = 50;
+  @Input() public footerHeight = 50;
+  @Input() public rowHeight;
+  @Input() public scrollbarH = true;
+  @Input() public scrollbarV;
+  @Input() public selectionType;
+  @Input() public limit;
+  @Input() public select = [];
+
+  @Input() public externalPaging;
+  @Input() public externalSorting;
+  @Input() public count;
+  @Input() public offset = 0;
+
+  @Input() public selectAllRowsOnPage;
+  @Input() public displayCheck = (row) => {};
 
   constructor() {}
 
-  public trackByFn(index, item) {
-    return index; // or item.id
+  public onPage(e) {
+    this.paged.emit(e);
+  }
+  public onActivate(e) {
+    this.activaded.emit(e);
+  }
+  public onSelect(e) {
+    this.selected.emit(e);
   }
 }

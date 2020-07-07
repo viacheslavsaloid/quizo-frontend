@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { AuthService } from 'src/app/services/root';
-import { ROOT_ROUTES } from 'src/app/routes/root/root.routes';
+import { AuthService } from 'src/app/services/core';
+import { CORE_ROUTES } from 'src/app/routes/core/core.routes';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -10,8 +10,8 @@ export class AuthGuard implements CanActivate {
   canActivate() {
     const user = this._authService.user;
 
-    if (!user) {
-      return this._router.navigate([ROOT_ROUTES.AUTH.path]);
+    if (user) {
+      return this._router.navigate([CORE_ROUTES.AUTH.path]);
     }
 
     return true;

@@ -11,8 +11,8 @@ export const AUTH_ROUTES = routesTypeDefinition({
     path: 'sign-up',
     fullPath: `${BASE_URL}/sign-up`,
   },
-  RESET_PASSWORD: {
-    path: 'reset-password',
-    fullPath: `${BASE_URL}/reset-password`,
+  RESTORE_PASSWORD: {
+    path: 'restore-password',
+    fullPath: `${BASE_URL}/restore-password`,
   },
 });

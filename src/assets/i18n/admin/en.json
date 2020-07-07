@@ -1,0 +1,22 @@
+{
+  "SIDENAV": {
+    "APP": "Angular Starter",
+    "DASHBOARD": "Dashboard",
+    "HOME": "Home",
+    "SETTINGS": "Settings",
+    "EXIT": "Exit"
+  },
+  "TABS": {
+    "FORM": "Form",
+    "LIST": "List"
+  },
+  "FORM": {
+    "FIRST_NAME": "Name",
+    "FIRST_NAME_PLACEHOLDER": "Enter Surname",
+    "LAST_NAME": "Surname",
+    "LAST_NAME_PLACEHOLDER": "Enter Surname"
+  },
+  "MODAL": {
+    "USER": "User"
+  }
+}

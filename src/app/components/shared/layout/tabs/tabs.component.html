@@ -1,5 +1,5 @@
 <mat-tab-group>
-  <mat-tab *ngFor="let tab of tabs; trackBy: trackByFn" [label]="tab.name">
+  <mat-tab *ngFor="let tab of tabs; trackBy: trackByFn" [label]="'TABS.' + tab.name | translate">
     <!-- Lazy Loading -->
     <ng-template matTabContent>
       <!-- Dynamic component -->

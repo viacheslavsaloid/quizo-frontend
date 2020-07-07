@@ -16,6 +16,7 @@ export interface PopupResponse<T> {
 
 export interface PopupOpenArgs {
   component: any;
+  panelClass?: string;
   type?: PopupType;
   title?: string;
   fields?: string[];
@@ -27,6 +28,10 @@ export interface OpenModalFormArgs {
   type?: PopupType;
   title?: string;
   translateTitle?: string;
-  fields: string;
+  fields: any;
   model?: any;
+  panelClass?: string;
 }
+
+export type OpenModalResponse<T> = Promise<PopupResponse<T>>;
+export type OpenModalAndAddOneResponse<T> = Promise<T>;

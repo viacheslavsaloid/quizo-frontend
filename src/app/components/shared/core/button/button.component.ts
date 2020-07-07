@@ -1,4 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+
+export type ColorType = 'primary' | 'accent' | 'warn';
 
 @Component({
   selector: 'app-button',
@@ -12,10 +14,10 @@ export class ButtonComponent {
   @Input() type = 'button';
   @Input() loading = false;
   @Input() disabled = false;
+  @Input() color: ColorType;
   @Input() icon: string;
-  @Input() color: string;
-  @Input() title: string;
-  @Input() class: string;
+  @Input() text: string;
+  @Input() className: string;
 
   constructor() {}
 
