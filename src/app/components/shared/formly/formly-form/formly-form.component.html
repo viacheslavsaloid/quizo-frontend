@@ -1,0 +1,14 @@
+<form [class]="className" [formGroup]="form" (submit)="onSubmit()">
+  <p *ngIf="title">{{ title | translate }}</p>
+
+  <formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>
+
+  <div class="actions">
+    <app-button *ngIf="showSubmitButton" color="submit" type="submit">{{
+      submitText || 'FORM.SUBMIT' | translate
+    }}</app-button>
+    <app-button *ngIf="showDeleteButton" color="warn" (click)="onDelete()">{{ 'FORM.DELETE' | translate }}</app-button>
+  </div>
+
+  <ng-content></ng-content>
+</form>

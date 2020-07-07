@@ -1,0 +1,53 @@
+.list-item {
+  position: relative;
+  border: 1px solid #e3e3e3;
+  border-radius: 13px;
+  padding: 45px 25px 0px;
+
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .index {
+    padding-bottom: 1.34375em;
+    margin-right: 15px;
+  }
+
+  formly-field {
+    flex: 1;
+  }
+
+  margin-bottom: 15px;
+
+  .actions {
+    width: 100%;
+
+    app-button {
+      margin-right: 15px;
+    }
+  }
+
+  mat-divider {
+    margin: 15px 0px;
+  }
+
+  mat-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    cursor: pointer;
+    opacity: 0.5;
+
+    color: #d84140;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+app-button {
+  display: inline-block;
+  margin: 0px 10px 10px 0px;
+}
