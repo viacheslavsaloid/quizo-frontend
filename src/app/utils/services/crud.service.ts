@@ -34,12 +34,14 @@ import { ApiService, AppPopupService } from 'src/app/services/core';
 import { AppState } from '../classes/state.class';
 import { Router } from '@angular/router';
 import {
-  OpenModalFormArgs,
-  OpenModalResponse,
-  OpenModalAndAddOneResponse,
+  OpenPopupFormArgs,
+  OpenPopupResponse,
+  OpenPopupAndAddOneResponse,
   PopupAction,
   PopupType,
 } from 'src/app/models/components/popup';
+
+import * as _ from 'lodash';
 
 @Injectable()
 export abstract class CrudService<T> {
@@ -53,7 +55,7 @@ export abstract class CrudService<T> {
     @Inject(String) protected _form: string
   ) {}
 
-  public moveToItem(id) {
+  public navigateToItem(id) {
     this._router.navigateByUrl(`${this._url}/${id}`);
   }
 
@@ -98,7 +100,9 @@ export abstract class CrudService<T> {
   public async getOne(args: GetOneArgs): GetOneResponse<T> {
     const { id } = args;
 
-    return Object.assign({}, this._state.selectOne(id) || (await this.addOneToStoreFromApi(args)));
+    const res = this._state.selectOne(id) || (await this.addOneToStoreFromApi(args));
+
+    return _.cloneDeep(res);
   }
 
   public async addManyToStoreFromApi(args: AddManyToStoreFromApiArgs = {}): AddManyToStoreFromApiResponse<any> {
@@ -188,40 +192,45 @@ export abstract class CrudService<T> {
     }
   }
 
-  public async openModal(args?: OpenModalFormArgs): OpenModalResponse<T> {
-    const { type, model } = args || {};
+  public async openPopup(args?: OpenPopupFormArgs): OpenPopupResponse<T> {
+    const { translateTitle, fields, type, model } = args || {};
 
-    return this._appPopupService.openModalForm({
-      translateTitle: this._form.toUpperCase(),
-      fields: this._form,
+    return this._appPopupService.openPopupForm({
+      translateTitle: translateTitle || this._form.toUpperCase(),
+      fields: fields || this._form,
       type,
       model,
     });
   }
 
-  public async openModalAndAddOne(): OpenModalAndAddOneResponse<T> {
-    const res = await this.openModal();
+  public async openPopupAndAddOne(args?: OpenPopupFormArgs): OpenPopupAndAddOneResponse<T> {
+    const { addToValue = {} } = args;
+
+    const res = await this.openPopup(args);
 
     if (res?.action === PopupAction.SUBMIT) {
-      return this.addOne({ value: res.data });
+      return this.addOne({ value: { ...res.data, ...addToValue } });
     }
   }
 
-  public async openModalAndUpdateOne(args: any): OpenModalAndAddOneResponse<T | void> {
-    const { data, type } = args;
+  public async openPopupAndUpdateOne(args: any): OpenPopupAndAddOneResponse<T | void> {
+    const { translateTitle, fields, model } = args || {};
 
-    console.log(data);
-
-    const res = await this.openModal({ type: PopupType.EDIT, fields: type, model: data });
+    const res = await this.openPopup({
+      type: PopupType.EDIT,
+      translateTitle: translateTitle || this._form.toUpperCase(),
+      fields: fields || this._form,
+      model,
+    });
 
     const action = res ? res.action : PopupAction.CLOSE;
 
     switch (action) {
       case PopupAction.DELETE:
-        return this.removeOne({ id: data.id });
+        return this.removeOne({ id: model.id });
 
       case PopupAction.SUBMIT:
-        return this.updateOne({ id: data.id, changes: res.data });
+        return this.updateOne({ id: model.id, changes: res.data });
 
       default:
         break;

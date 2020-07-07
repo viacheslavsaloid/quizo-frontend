@@ -1,0 +1,9 @@
+<div class="actions-wrapper">
+  <app-button
+    *ngFor="let action of actions; trackBy: trackByFn"
+    [color]="action.color"
+    [text]="action.name"
+    (clicked)="action.onClick($event)"
+  >
+  </app-button>
+</div>

@@ -1,22 +1,48 @@
 {
   "SIDENAV": {
-    "APP": "Angular Starter",
-    "DASHBOARD": "Dashboard",
-    "HOME": "Home",
-    "SETTINGS": "Settings",
+    "APP": "Quizo",
+    "QUESTS": "Quests",
+    "QUIZZES": "Quizzes",
     "EXIT": "Exit"
   },
   "TABS": {
     "FORM": "Form",
-    "LIST": "List"
+    "LIST": "List",
+    "ROUNDS": "Round",
+    "MESSAGES": "Messages",
+    "GAME": "Game",
+    "PLAYERS": "Players",
+    "SETTINGS": "Settings",
+    "QUESTIONS": "Questions",
+    "ANSWER": "Answer",
+    "HINTS": "Hints"
   },
   "FORM": {
     "FIRST_NAME": "Name",
     "FIRST_NAME_PLACEHOLDER": "Enter Surname",
     "LAST_NAME": "Surname",
-    "LAST_NAME_PLACEHOLDER": "Enter Surname"
+    "LAST_NAME_PLACEHOLDER": "Enter Surname",
+    "TITLE": "Title",
+    "TITLE_PLACEHOLDER": "Enter Title",
+    "DESCRIPTION": "Description",
+    "DESCRIPTION_PLACEHOLDER": "Enter Description",
+    "ANSWER": "Answer",
+    "ANSWER_PLACEHOLDER": "Enter Answer",
+    "WRONGS": "Wrong",
+    "WRONGS_PLACEHOLDER": "Enter Wrong",
+    "HINTS": "Wrong",
+    "HINTS_PLACEHOLDER": "Enter Wrong",
+    "PRIVATE": "Private",
+    "MEDIAS": "Медиа",
+    "MEDIAS_PLACEHOLDER": "Введите медиа",
+    "ACTIVE": "Active"
   },
   "MODAL": {
-    "USER": "User"
+    "QUEST": "Quest",
+    "QUIZ": "Quiz",
+    "QUEST_ROUND": "Quest Round",
+    "QUIZ_ROUND": "Quiz Round",
+    "QUEST_ROUND_QUESTION": "Quest Round Question",
+    "QUIZ_ROUND_QUESTION": "Quiz Round Question"
   }
 }

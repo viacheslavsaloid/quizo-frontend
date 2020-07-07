@@ -24,14 +24,15 @@ export interface PopupOpenArgs {
   media?: string;
 }
 
-export interface OpenModalFormArgs {
+export interface OpenPopupFormArgs {
   type?: PopupType;
   title?: string;
   translateTitle?: string;
-  fields: any;
+  fields?: any;
   model?: any;
   panelClass?: string;
+  addToValue?: {};
 }
 
-export type OpenModalResponse<T> = Promise<PopupResponse<T>>;
-export type OpenModalAndAddOneResponse<T> = Promise<T>;
+export type OpenPopupResponse<T> = Promise<PopupResponse<T>>;
+export type OpenPopupAndAddOneResponse<T> = Promise<T>;

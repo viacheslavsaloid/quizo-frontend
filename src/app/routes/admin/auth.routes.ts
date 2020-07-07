@@ -3,35 +3,34 @@ import { routesTypeDefinition } from 'src/app/utils/types';
 const BASE_URL = '/admin';
 
 export const ADMIN_ROUTES = routesTypeDefinition({
-  HOME: {
-    path: 'home',
-    fullPath: `${BASE_URL}/home`,
+  QUESTS: {
+    path: 'quests',
+    fullPath: `/${BASE_URL}/quests`,
     inNav: true,
-    title: 'HOME',
-    icon: 'home',
+    icon: 'search',
+    title: 'QUESTS',
   },
-  DASHBOARD: {
-    path: 'dashboard',
-    fullPath: `${BASE_URL}/dashboard`,
+  QUEST: {
+    path: 'quests/:id',
+    fullPath: `/${BASE_URL}/quests/:id`,
+  },
+  QUEST_ROUND: {
+    path: 'quests/:gameId/rounds/:roundId',
+    fullPath: `/${BASE_URL}/quests/:gameId/rounds/:roundId`,
+  },
+  QUIZZES: {
+    path: 'quizzes',
+    fullPath: `/${BASE_URL}/quizzes`,
     inNav: true,
-    title: 'DASHBOARD',
-    icon: 'dashboard',
+    icon: 'question_answer',
+    title: 'QUIZZES',
   },
-  SETTINGS: {
-    path: 'settings',
-    fullPath: `${BASE_URL}/settings`,
-    inNav: true,
-    title: 'SETTINGS',
-    icon: 'settings',
+  QUIZ: {
+    path: 'quizes/:id',
+    fullPath: `/${BASE_URL}/quizzes/:id`,
   },
-  USERS: {
-    path: 'users',
-    fullPath: `${BASE_URL}/users`,
-    inNav: false,
-  },
-  USER: {
-    path: 'users/:id',
-    fullPath: `${BASE_URL}/users/:id`,
-    inNav: false,
+  QUIZ_ROUND: {
+    path: 'quizzes/:gameId/rounds/:roundId',
+    fullPath: `/${BASE_URL}/quizzes/:gameId/rounds/:roundId`,
   },
 });

@@ -1,9 +1,0 @@
-@import 'src/assets/styles/mixins/breakpoints';
-
-p {
-  color: red;
-
-  @include media-breakpoint('xs') {
-    color: blue;
-  }
-}

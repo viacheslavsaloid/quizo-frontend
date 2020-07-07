@@ -2,12 +2,14 @@ const getNestedValue = (value, nestedFields) => nestedFields.reduce((pre, cur) =
 
 export const filterData = ({ data, filter = {} }) =>
   data.filter((value) =>
-    Object.keys(filter).every((key) => {
-      const [parentField, ...nestedFields] = key.split('.');
+    Object.keys(filter)
+      .filter((key) => filter[key])
+      .every((key) => {
+        const [parentField, ...nestedFields] = key.split('.');
 
-      const nestedValue = getNestedValue(value[parentField], nestedFields);
+        const nestedValue = getNestedValue(value[parentField], nestedFields);
+        const nestedKey = 'id';
 
-      const nestedKey = 'id';
-      return nestedValue === filter[key] || nestedValue[nestedKey] === filter[key];
-    })
+        return nestedValue === filter[key] || nestedValue[nestedKey] === filter[key];
+      })
   );

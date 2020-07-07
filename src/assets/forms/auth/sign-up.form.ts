@@ -1,1 +1,1 @@
-export const SIGN_UP_FORM = ['email', 'password'];
+export const SIGN_UP_FORM = ['name', 'password'];

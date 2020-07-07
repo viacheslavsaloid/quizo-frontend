@@ -6,4 +6,5 @@ export const ROLLBAR_CONFIGS: Rollbar.Configuration = {
   captureUncaught: true,
   captureUnhandledRejections: true,
   environment: environment.production ? 'production' : 'develop',
+  enabled: environment.production,
 };

@@ -1,5 +1,5 @@
 {
-  "name": "angular-starter",
+  "name": "quizo",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -43,6 +43,7 @@
     "@ngxs/logger-plugin": "^3.6.2",
     "@ngxs/store": "^3.6.2",
     "@swimlane/ngx-datatable": "^17.0.0",
+    "jwt-decode": "^2.2.0",
     "ng-dynamic-component": "^6.1.0",
     "ngx-mat-select-search": "^2.2.0",
     "ngx-material-file-input": "^2.1.1",

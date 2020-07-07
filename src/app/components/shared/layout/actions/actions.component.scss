@@ -1,0 +1,10 @@
+.actions-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 15px 0px;
+
+  app-button {
+    display: block;
+    margin-right: 15px;
+  }
+}

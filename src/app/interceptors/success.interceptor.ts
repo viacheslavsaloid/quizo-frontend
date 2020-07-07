@@ -24,7 +24,7 @@ export class SuccessInterceptor implements HttpInterceptor {
           this._showMethods.includes(req.method) &&
           (event.status === 201 || event.status === 200)
         ) {
-          this._appNotificationService.showSuccess(event.status, req.method);
+          this._appNotificationService.showSuccess(req.method, event.status);
         }
       })
     );

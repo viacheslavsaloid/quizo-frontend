@@ -1,1 +1,1 @@
-export const SIGN_IN_FORM = ['email', 'password'];
+export const SIGN_IN_FORM = ['name', 'password'];

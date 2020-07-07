@@ -6,6 +6,7 @@ import { CardComponent } from './card/card.component';
 import { HeaderComponent } from './header/header.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { ActionsComponent } from './actions/actions.component';
 
 export * from './fab-speed-deal/fab-speed-deal.component';
 export * from './list/list.component';
@@ -15,6 +16,7 @@ export * from './card/card.component';
 export * from './header/header.component';
 export * from './sidenav/sidenav.component';
 export * from './toolbar/toolbar.component';
+export * from './actions/actions.component';
 
 export const LAYOUT_COMPONENTS = [
   FabSpeedDealComponent,
@@ -25,4 +27,5 @@ export const LAYOUT_COMPONENTS = [
   HeaderComponent,
   SidenavComponent,
   ToolbarComponent,
+  ActionsComponent,
 ];

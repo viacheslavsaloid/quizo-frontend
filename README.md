@@ -188,7 +188,7 @@ npm run build:prod
 - #### SEO:
 
   - [ngx-meta](https://www.npmjs.com/package/@ngx-meta/core) `npm i @ngx-meta/core`
-  - [universal](https://angular.io/guide/universal) `ng add @nguniversal/express-engine --clientProject angular-starter`
+  - [universal](https://angular.io/guide/universal) `ng add @nguniversal/express-engine --clientProject quizo`
 
 - #### State Manager:
 

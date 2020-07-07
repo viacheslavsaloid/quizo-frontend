@@ -14,7 +14,7 @@ export class ListComponent {
 
   @Input() items: [];
   @Input() items$: Observable<[]>;
-  @Input() fabTrigger: [];
+  @Input() fabTrigger: {};
 
   @Input() enableSort = true;
 

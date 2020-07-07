@@ -40,7 +40,7 @@ export class AdminComponent implements OnInit {
     this.acitveLanguage = this._translateService.currentLang;
 
     const routes = Object.values(ADMIN_ROUTES);
-    this.navLinks = routes.filter((link) => link.inNav);
+    this.navLinks = routes.filter((link: any) => link.inNav);
 
     this.user$ = this._authService.user$;
 

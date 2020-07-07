@@ -1,0 +1,6 @@
+<app-list
+  [items]="games$ | async"
+  (clicked)="onGameClick($event)"
+  (sorted)="onSort($event)"
+  [fabTrigger]="fabTrigger"
+></app-list>

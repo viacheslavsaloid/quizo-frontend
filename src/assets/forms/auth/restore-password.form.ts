@@ -1,1 +1,1 @@
-export const RESTORE_PASSWORD_FORM = ['email'];
+export const RESTORE_PASSWORD_FORM = ['name'];

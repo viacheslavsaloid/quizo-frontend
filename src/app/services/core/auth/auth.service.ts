@@ -6,6 +6,9 @@ import { ApiService } from '../api/api.service';
 import { AuthState } from 'src/app/store/states/core';
 import { AppConfigsService } from '../app-configs/app-configs.service';
 import { Router } from '@angular/router';
+import { decodeToken } from 'src/app/utils/jwt';
+import { TokenModel } from 'src/app/models/utils';
+import { CORE_ROUTES } from 'src/app/routes/core/core.routes';
 
 @Injectable()
 export class AuthService {
@@ -21,7 +24,8 @@ export class AuthService {
     const token = this._appConfigsService.get(this._configName);
 
     if (token) {
-      this._authState.login(token);
+      const user = decodeToken(token);
+      this._authState.login(user);
     }
   }
 
@@ -37,13 +41,20 @@ export class AuthService {
     await this._apiService.post(this._url + 'logout', {});
     this._authState.logout();
     this._appConfigsService.set(this._configName, null);
-    this._router.navigateByUrl('auth');
+    this._router.navigateByUrl(CORE_ROUTES.AUTH.fullPath);
   }
 
   public async login(args) {
     const { type, data } = args;
-    const res = await this._apiService.post<User>(this._url + type, data);
-    this._authState.login(res.data);
-    this._appConfigsService.set(this._configName, res.data);
+    const res = await this._apiService.post<{ token: string }>(this._url + `company/${type}`, data);
+
+    const { token } = res.data;
+    const user = decodeToken(token);
+
+    this._authState.login(user);
+
+    this._appConfigsService.set(this._configName, token);
+
+    this._router.navigateByUrl(CORE_ROUTES.ADMIN.fullPath);
   }
 }

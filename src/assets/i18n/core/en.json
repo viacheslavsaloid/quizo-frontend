@@ -6,6 +6,8 @@
   "FORM": {
     "EMAIL": "Email",
     "EMAIL_PLACEHOLDER": "Enter email",
+    "NAME": "Name",
+    "NAME_PLACEHOLDER": "Enter name",
     "PASSWORD": "Password",
     "PASSWORD_PLACEHOLDER": "Enter Password",
 
@@ -22,7 +24,11 @@
   "ERROR": {
     "STATUS": "Status: {{ status }}",
     "0": "No response from server",
-    "404": "Page didn'd found"
+    "404": "Page didn'd found",
+    "400": "Bad Request",
+    "409": "User already exist",
+    "1001": "User with this name already exist",
+    "500": "Server Error"
   },
   "SUCCESS": {
     "STATUS": "Status: {{ status }}",

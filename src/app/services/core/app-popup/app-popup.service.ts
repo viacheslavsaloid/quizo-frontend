@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { OpenModalFormArgs, PopupType, PopupOpenArgs } from 'src/app/models/components/popup';
+import { OpenPopupFormArgs, PopupType, PopupOpenArgs } from 'src/app/models/components/popup';
 import { PopupFormComponent } from 'src/app/components/shared';
 
 @Injectable()
 export class AppPopupService {
   constructor(private _matDialog: MatDialog) {}
 
-  public openModalForm(args: OpenModalFormArgs) {
+  public openPopupForm(args: OpenPopupFormArgs) {
     const { type = PopupType.CREATE, title, model = {}, translateTitle, fields, panelClass } = args;
 
     const modalTitle = title || `MODAL.${translateTitle}`;

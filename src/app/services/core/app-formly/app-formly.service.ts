@@ -18,6 +18,7 @@ export class AppFormlyService {
     preview: 'file',
     background: 'file',
     media: 'file',
+    medias: 'file',
     password: 'password',
   };
 
