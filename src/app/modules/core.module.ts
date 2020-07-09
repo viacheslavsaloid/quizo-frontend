@@ -30,8 +30,8 @@ import { CORE_GUARDS } from '../guards';
 import { CORE_HOOKS } from '../hooks';
 import { MatDialogModule } from '@angular/material/dialog';
 
-export const CORE_DECLARATIONS = [CoreComponent];
-export const CORE_IMPORTS = [
+const CORE_DECLARATIONS = [CoreComponent];
+const CORE_IMPORTS = [
   CommonModule,
   CoreRoutingModule,
   HttpClientModule,
@@ -54,7 +54,7 @@ export const CORE_IMPORTS = [
 
   MatDialogModule,
 ];
-export const CORE_PROVIDERS = [
+const CORE_PROVIDERS = [
   ...CORE_SERVICES,
   ...CORE_GUARDS,
   ...CORE_SETTINGS_PROVIDERS,

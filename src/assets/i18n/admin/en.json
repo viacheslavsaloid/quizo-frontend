@@ -15,7 +15,8 @@
     "SETTINGS": "Settings",
     "QUESTIONS": "Questions",
     "ANSWER": "Answer",
-    "HINTS": "Hints"
+    "HINTS": "Hints",
+    "START": "Start"
   },
   "FORM": {
     "FIRST_NAME": "Name",

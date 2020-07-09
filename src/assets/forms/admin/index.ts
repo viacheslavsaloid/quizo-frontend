@@ -10,6 +10,7 @@ import {
   QUEST_ROUND_ANSWER,
   QUEST_ROUND_QUESTION,
   QUIZ_ROUND_QUESTION,
+  QUIZ_SETTINGS_FORM,
 } from './game.form';
 
 import { QUIZ_ROUND_FORM, QUEST_ROUND_FORM } from './round.form';
@@ -21,6 +22,7 @@ export const ADMIN_FORMS = {
   quiz_round: QUIZ_ROUND_FORM,
   quest_round: QUEST_ROUND_FORM,
   quest_settings: QUEST_SETTINGS_FORM,
+  quiz_settings: QUIZ_SETTINGS_FORM,
   quest_messages: QUEST_MESSAGES_FORM,
   quest_round_hints: QUEST_ROUND_HINTS,
   quest_round_settings: QUEST_ROUND_SETTINGS,
@@ -28,4 +30,5 @@ export const ADMIN_FORMS = {
   quest_round_answer: QUEST_ROUND_ANSWER,
   quest_round_question: QUEST_ROUND_QUESTION,
   quiz_round_question: QUIZ_ROUND_QUESTION,
+  quiz_round_settings: QUIZ_ROUND_SETTINGS,
 };

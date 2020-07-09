@@ -18,13 +18,12 @@ export class AdminGamesComponent implements OnInit {
   public games$: Observable<Game[]>;
   public searchInput: FormControl;
 
-  public title: string;
   public type: GameType;
 
   public fabTrigger: FabTrigger;
 
   constructor(
-    private _route: ActivatedRoute,
+    private _activatedRoute: ActivatedRoute,
     private _ngOnDestroy$: NgOnDestory$,
     private _authService: AuthService,
     private _gamesService: GamesService
@@ -39,7 +38,7 @@ export class AdminGamesComponent implements OnInit {
   }
 
   public onGameClick(game: Game) {
-    this._gamesService.navigateToItem(game.id);
+    this._gamesService.navigateToAdminGame(game);
   }
 
   public onSort(games: Game[]) {
@@ -48,12 +47,11 @@ export class AdminGamesComponent implements OnInit {
 
   ngOnInit(): void {
     const typeField = 'type';
-    this.type = this._route.snapshot.data[typeField] as GameType;
-    this.title = this.type === GameType.QUEST ? 'QUESTS' : 'QUIZZES';
+    this.type = this._activatedRoute.snapshot.data[typeField] as GameType;
 
     this.fabTrigger = {
       icon: 'add',
-      func: () => this.onAddClick(),
+      func: this.onAddClick.bind(this),
     };
 
     this.searchInput = new FormControl('');

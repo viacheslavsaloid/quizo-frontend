@@ -8,6 +8,7 @@ import {
   FormlyDatePickerComponent,
   FormlyHideComponent,
   FormlyGroupWrapperComponent,
+  FormlyGameInputComponent,
 } from 'src/app/components/shared/formly';
 
 import { ConfigOption } from '@ngx-formly/core';
@@ -19,6 +20,10 @@ export const FORMLY_CONFIGS: ConfigOption = {
     {
       name: 'app-checkbox',
       component: FormlyFieldCheckbox,
+    },
+    {
+      name: 'game',
+      component: FormlyGameInputComponent,
     },
     {
       name: 'email',

@@ -11,11 +11,16 @@ const routes: Routes = [
   {
     path: CORE_ROUTES.ADMIN.path,
     canActivate: [AuthGuard],
+    data: { expectedRole: 'company' },
     loadChildren: () => import('src/app/modules/admin.module').then((m) => m.AdminModule),
   },
   {
+    path: CORE_ROUTES.CLIENT.path,
+    loadChildren: () => import('src/app/modules/client.module').then((m) => m.ClientModule),
+  },
+  {
     path: '**',
-    redirectTo: CORE_ROUTES.ADMIN.path,
+    redirectTo: CORE_ROUTES.CLIENT.path,
   },
 ];
 

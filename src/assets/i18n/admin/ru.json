@@ -15,7 +15,8 @@
     "SETTINGS": "Настройки",
     "QUESTIONS": "Вопросы",
     "ANSWER": "Ответ",
-    "HINTS": "Подсказки"
+    "HINTS": "Подсказки",
+    "START": "Запуск"
   },
   "FORM": {
     "FIRST_NAME": "Имя",

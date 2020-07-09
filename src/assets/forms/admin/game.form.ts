@@ -1,5 +1,5 @@
 export const QUEST_FORM = ['name'];
-export const QUIZ_FORM = ['name'];
+export const QUIZ_FORM = ['name', 'logo', 'preview', 'background'];
 
 export const QUEST_SETTINGS_FORM = [
   'name',
@@ -46,24 +46,7 @@ export const QUEST_ROUND_ANSWER = {
   },
 };
 
-export const QUIZ_ROUND_QUESTION = {
-  questions: {
-    array: {
-      key: 'questions',
-      group: [
-        {
-          key: 'id',
-          hideTemplate: true,
-        },
-        {
-          key: 'title',
-          label: 'FORM.QUESTION',
-          placeholder: 'FORM.QUESTION_PLACEHOLDER',
-        },
-      ],
-    },
-  },
-};
+export const QUIZ_ROUND_QUESTION = ['title'];
 
 export const QUEST_ROUND_QUESTION = {
   question: {
@@ -74,3 +57,16 @@ export const QUEST_ROUND_QUESTION = {
     defaultValue: [],
   },
 };
+
+export const QUIZ_SETTINGS_FORM = [
+  'name',
+  'logo',
+  'preview',
+  'background',
+  {
+    key: 'private',
+    type: 'app-checkbox',
+  },
+];
+
+export const QUIZ_ROUND_SETTINGS_FORM = ['name'];

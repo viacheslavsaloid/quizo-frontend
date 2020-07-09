@@ -22,11 +22,7 @@ export class AuthService {
     private _appConfigsService: AppConfigsService
   ) {
     const token = this._appConfigsService.get(this._configName);
-
-    if (token) {
-      const user = decodeToken(token);
-      this._authState.login(user);
-    }
+    this.checkToken(token);
   }
 
   public get user$(): Observable<User> {
@@ -35,6 +31,23 @@ export class AuthService {
 
   public get user(): User {
     return this._authState.snapshot;
+  }
+
+  public async checkToken(token) {
+    const verified = await this.me();
+    if (token && verified) {
+      const user = decodeToken(token);
+      this._authState.login(user);
+    }
+  }
+
+  public async me() {
+    try {
+      const res = await this._apiService.get<User>(this._url + 'me');
+      return res.data;
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   public async logout() {

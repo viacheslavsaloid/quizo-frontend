@@ -5,8 +5,8 @@ import { SharedModule } from './shared.module';
 import { AuthComponent } from '../containers/auth/auth.component';
 import { AUTH_PAGES } from '../pages/auth';
 
-export const AUTH_DECLARATIONS = [AuthComponent, ...AUTH_PAGES];
-export const AUTH_IMPORTS = [SharedModule, AuthRoutingModule];
+const AUTH_DECLARATIONS = [AuthComponent, ...AUTH_PAGES];
+const AUTH_IMPORTS = [SharedModule, AuthRoutingModule];
 
 @NgModule({
   declarations: AUTH_DECLARATIONS,

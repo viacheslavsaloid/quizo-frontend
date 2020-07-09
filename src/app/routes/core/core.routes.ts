@@ -9,4 +9,8 @@ export const CORE_ROUTES = routesTypeDefinition({
     path: 'admin',
     fullPath: '/admin',
   },
+  CLIENT: {
+    path: '',
+    fullPath: '/',
+  },
 });

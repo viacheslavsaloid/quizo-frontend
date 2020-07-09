@@ -4,7 +4,6 @@ import { ApiService, AppPopupService } from '../../core';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { ADMIN_ROUTES } from 'src/app/routes/admin/auth.routes';
-import { GamesState } from 'src/app/store/states/admin';
 import {
   RegisterToGameArgs,
   RegisterToGameResponse,
@@ -16,6 +15,8 @@ import {
   HasAccessArgs,
   Game,
 } from 'src/app/models/game';
+import { GamesState } from 'src/app/store/states/games';
+import { CLIENT_ROUTES } from 'src/app/routes/client/client.routes';
 
 @Injectable()
 export class GamesService extends CrudService<Game> {
@@ -25,15 +26,7 @@ export class GamesService extends CrudService<Game> {
     protected _gamesState: GamesState,
     protected _appPopupService: AppPopupService
   ) {
-    super(
-      _apiService,
-      _appPopupService,
-      _gamesState,
-      _router,
-      environment.gamesEndpoint,
-      ADMIN_ROUTES.QUESTS.fullPath,
-      'game'
-    );
+    super(_apiService, _appPopupService, _gamesState, _router, environment.gamesEndpoint, '', 'game');
   }
 
   public async registerToGame(args: RegisterToGameArgs): Promise<RegisterToGameResponse> {
@@ -73,16 +66,20 @@ export class GamesService extends CrudService<Game> {
   public async hasAccess(args: HasAccessArgs): Promise<HasAccessResponse> {
     try {
       const { id } = args;
-      const { data } = await this._apiService.get<{ access: boolean }>(this._apiEndpoint + id + '/access');
+      const res = await this._apiService.get<{ access: boolean }>(this._apiEndpoint + id + '/access');
 
-      return data;
+      return res?.data;
     } catch (err) {
       console.error(err);
     }
   }
 
-  public navigateToGame(game: Game) {
+  public navigateToAdminGame(game: Game) {
     const { type, id } = game;
     this._router.navigate([ADMIN_ROUTES[type.toUpperCase()].fullPath.replace(':id', id)]);
+  }
+
+  public navigateToGame(game: Game) {
+    this._router.navigate([CLIENT_ROUTES.GAME.fullPath.replace(':id', game.id)]);
   }
 }

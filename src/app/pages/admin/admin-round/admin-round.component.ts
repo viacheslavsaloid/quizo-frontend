@@ -23,7 +23,7 @@ export class AdminRoundComponent implements OnInit {
 
   constructor(
     private _ngOnDestroy$: NgOnDestory$,
-    private _route: ActivatedRoute,
+    private _activatedRoute: ActivatedRoute,
     private _roundsService: RoundsService,
     private _questionsService: QuestionsService,
     private _router: Router
@@ -120,9 +120,9 @@ export class AdminRoundComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this._route.params.pipe(takeUntil(this._ngOnDestroy$)).subscribe(async (params) => {
+    this._activatedRoute.params.pipe(takeUntil(this._ngOnDestroy$)).subscribe(async (params) => {
       const id = params['roundId'] as string;
-      this.type = this._route.snapshot.data['type'] as GameType;
+      this.type = this._activatedRoute.snapshot.data['type'] as GameType;
 
       this.round = await this._roundsService.getOne({ id });
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgOnDestory$ } from 'src/app/hooks';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GamesService, RoundsService } from 'src/app/services/game';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest } from 'rxjs';
 import { Tab } from 'src/app/models/components/tabs';
 import { AppNotificationService } from 'src/app/services/core';
 import { ADMIN_ROUTES } from 'src/app/routes/admin/auth.routes';
@@ -10,7 +10,7 @@ import { Clipboard } from '@angular/cdk/clipboard';
 import { environment } from 'src/environments/environment';
 import { FormlyFormComponent, ListComponent, TableComponent, ActionsComponent } from 'src/app/components/shared';
 import { FormGroup } from '@angular/forms';
-import { takeUntil, map } from 'rxjs/operators';
+import { takeUntil, map, tap } from 'rxjs/operators';
 import { GameType, Game, Round } from 'src/app/models/game';
 import { ADMIN_FORMS } from 'src/assets/forms/admin';
 
@@ -32,7 +32,7 @@ export class AdminGameComponent implements OnInit {
 
   constructor(
     private _ngOnDestroy$: NgOnDestory$,
-    private _route: ActivatedRoute,
+    private _activatedRoute: ActivatedRoute,
     private _gamesService: GamesService,
     private _roundsService: RoundsService,
     private _appNotificationsService: AppNotificationService,
@@ -80,8 +80,8 @@ export class AdminGameComponent implements OnInit {
     this._appNotificationsService.showSuccess('Ссылка успешно скопирована');
   }
 
-  public onRoundToogle(game, round) {
-    this._roundsService.toogle({ gameId: game.id, id: round.id });
+  public onRoundToogle(round) {
+    this._roundsService.toogle(round.id);
   }
 
   public async getTabs(type: GameType, game: Game): Promise<Tab[]> {
@@ -158,16 +158,22 @@ export class AdminGameComponent implements OnInit {
       },
     };
 
+    const game$ = this._gamesService.getOne$({ id: game.id });
+
     const tabs = {
       [GameType.QUIZ]: [
         {
           name: 'START',
           component: ListComponent,
           inputs: {
-            items$: [],
+            items$: combineLatest([this.rounds$, game$]).pipe(
+              map(([rounds, changeGame]) =>
+                rounds.map((round) => (changeGame.activeRound === round.id ? { ...round, isActive: true } : round))
+              )
+            ),
           },
           outputs: {
-            clicked: (round) => this.onRoundToogle(game, round),
+            clicked: this.onRoundToogle.bind(this),
           },
         },
       ],
@@ -192,9 +198,9 @@ export class AdminGameComponent implements OnInit {
   async ngOnInit() {
     this.gameForm = new FormGroup({});
 
-    this._route.params.pipe(takeUntil(this._ngOnDestroy$)).subscribe(async (params) => {
+    this._activatedRoute.params.pipe(takeUntil(this._ngOnDestroy$)).subscribe(async (params) => {
       const id: string = params['id'];
-      this.type = this._route.snapshot.data['type'] as GameType;
+      this.type = this._activatedRoute.snapshot.data['type'] as GameType;
 
       this.game = await this._gamesService.getOne({ id });
 

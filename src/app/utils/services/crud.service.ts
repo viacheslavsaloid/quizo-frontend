@@ -111,15 +111,18 @@ export abstract class CrudService<T> {
   }
 
   public async addOneToStoreFromApi(args: AddOneToStoreFromApiArgs): AddOneToStoreFromApiResponse<T> {
-    const { data } = await this.getOneFromApi(args);
-    this.addToStore({ data: [data] });
-    return data;
+    const res = await this.getOneFromApi(args);
+
+    if (res) {
+      this.addToStore({ data: [res.data] });
+      return res.data;
+    }
   }
 
   public async getOneFromApi(args?: GetOneFromApiArgs): GetOneFromApiResponse<T> {
     try {
       const { id } = args;
-      return this._apiService.get<T>(this._apiEndpoint + id);
+      return await this._apiService.get<T>(this._apiEndpoint + id);
     } catch (err) {
       console.error(err);
     }
@@ -170,13 +173,15 @@ export abstract class CrudService<T> {
 
   public async updateOne(args: UpdateOneArgs<T>): UpdateOneResponse<T> {
     try {
-      const { id, changes } = args;
+      const { id, changes, local } = args;
 
-      const { data } = await this._apiService.patch<T>(this._apiEndpoint + id, changes);
+      if (!local) {
+        await this._apiService.patch<T>(this._apiEndpoint + id, changes);
+      }
 
       this._state.updateOne({ id, changes });
 
-      return data;
+      return changes;
     } catch (err) {
       console.error(err);
     }

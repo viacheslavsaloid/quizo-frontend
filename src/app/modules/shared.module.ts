@@ -11,7 +11,7 @@ import { DynamicIoModule } from 'ng-dynamic-component';
 import { NgProgressModule } from 'ngx-progressbar';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
-export const SHARED_IMPORTS = [
+const SHARED_IMPORTS = [
   CommonModule,
   RouterModule,
   FormsModule,
@@ -24,9 +24,9 @@ export const SHARED_IMPORTS = [
   NgxDatatableModule,
   DynamicIoModule,
 ];
-export const SHARED_DECLARATIONS = [...SHARED_COMPONENTS];
-export const SHARED_EXPORTS = [...SHARED_IMPORTS, ...SHARED_DECLARATIONS];
-export const SHARED_PROVIDERS = [];
+const SHARED_DECLARATIONS = [...SHARED_COMPONENTS];
+const SHARED_EXPORTS = [...SHARED_IMPORTS, ...SHARED_DECLARATIONS];
+const SHARED_PROVIDERS = [];
 
 @NgModule({
   declarations: SHARED_DECLARATIONS,

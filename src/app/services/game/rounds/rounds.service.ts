@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { CrudService } from 'src/app/utils/services/crud.service';
 import { ApiService, AppPopupService } from '../../core';
 import { environment } from 'src/environments/environment';
-import { RoundsState } from 'src/app/store/states/admin';
 import { Router } from '@angular/router';
 import { ADMIN_ROUTES } from 'src/app/routes/admin/auth.routes';
 import { Round, Game } from 'src/app/models/game';
 import { GamesService } from '../games/games.service';
+import { RoundsState } from 'src/app/store/states/games';
 
 @Injectable()
 export class RoundsService extends CrudService<Round> {
@@ -18,25 +18,20 @@ export class RoundsService extends CrudService<Round> {
 
     private _gamesService: GamesService
   ) {
-    super(
-      _apiService,
-      _appPopupService,
-      _roundState,
-      _router,
-      environment.roundsEndpoint,
-      ADMIN_ROUTES.QUEST.fullPath,
-      'round'
-    );
+    super(_apiService, _appPopupService, _roundState, _router, environment.roundsEndpoint, '', 'round');
   }
 
-  public async toogle(params) {
+  public async toogle(id) {
     try {
-      const { gameId, id } = params;
-      const game = await this._gamesService.getOne({ id: gameId });
+      const round = await this.getOne({ id });
 
-      const res = await this._apiService.post<{ activeRound: string }>(`${environment.roundsEndpoint + id}/toogle`, {});
+      const { data } = await this._apiService.post<{ activeRound: string }>(`${this._apiEndpoint + id}/toogle`, {});
 
-      game.activeRound = res.data.activeRound;
+      this._gamesService.updateOne({
+        id: round.game.id,
+        changes: { ...round.game, ...data },
+        local: true,
+      });
     } catch (err) {
       console.error(err);
     }

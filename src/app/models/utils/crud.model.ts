@@ -2,7 +2,9 @@ import { Observable } from 'rxjs';
 import { IdModel, ChangesModel, DataModel, FilterModel } from './data.model';
 
 export interface RemoveOneArgs extends IdModel {}
-export interface UpdateOneArgs<T> extends IdModel, ChangesModel<T> {}
+export interface UpdateOneArgs<T> extends IdModel, ChangesModel<T> {
+  local?: boolean;
+}
 export interface UpdateManyArgs<T> extends IdModel, ChangesModel<T[]> {}
 
 export interface GetManyFromApiArgs extends FilterModel {}

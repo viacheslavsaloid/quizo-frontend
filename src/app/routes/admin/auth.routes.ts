@@ -26,7 +26,7 @@ export const ADMIN_ROUTES = routesTypeDefinition({
     title: 'QUIZZES',
   },
   QUIZ: {
-    path: 'quizes/:id',
+    path: 'quizzes/:id',
     fullPath: `/${BASE_URL}/quizzes/:id`,
   },
   QUIZ_ROUND: {
