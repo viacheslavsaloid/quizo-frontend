@@ -13,6 +13,7 @@ import { FormGroup } from '@angular/forms';
 import { takeUntil, map, tap } from 'rxjs/operators';
 import { GameType, Game, Round } from 'src/app/models/game';
 import { ADMIN_FORMS } from 'src/assets/forms/admin';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-admin-game',
@@ -118,20 +119,37 @@ export class AdminGameComponent implements OnInit {
       name: 'PLAYERS',
       component: TableComponent,
       inputs: {
-        columns: [
-          {
-            prop: 'id',
-            title: 'Токен',
-            onClick: this.onTokenCopy,
-          },
-          { prop: 'name', title: 'Имя' },
-          {
-            prop: 'access',
-            title: 'Доступ',
-            onToogle: (user) => this.onAccessToogle(game, user),
-          },
-        ],
-        // data: game.players.map(({ access, id, user }) => ({ access, id, name: user ? user.name : '' }))
+        columns: [{ prop: 'token' }, { prop: 'name' }, { prop: 'hints' }, { prop: 'time' }],
+        rows: game.players.map((player) => {
+          const hints = player.history.filter((x) => x.action === 'hint').length;
+          const startDate = player.history.find((x) => x.action === 'start_game')?.date;
+
+          const exitDate = player.history.find((x) => x.action === 'exit_game')?.date;
+
+          const momentStartDate = moment(startDate);
+          const momentExitDate = moment(exitDate);
+
+          const hours = momentExitDate.diff(momentStartDate, 'hours');
+          const minutes = momentExitDate.diff(momentStartDate, 'minutes') - hours * 60;
+          const seconds = momentExitDate.diff(momentStartDate, 'seconds') - minutes * 60;
+
+          return {
+            token: player.id,
+            name: player.user.name,
+            hints,
+            time: `${exitDate ? 'Finished' : 'Still in game'} ${hours}:${minutes}:${seconds}`,
+          };
+        }),
+      },
+      outputs: {
+        selected: (row) => {
+          console.log(row);
+        },
+        activated: (e) => {
+          if (e.type === 'click') {
+            this._router.navigateByUrl(ADMIN_ROUTES.PLAYER.fullPath.replace(':id', e.row.token));
+          }
+        },
       },
     };
 

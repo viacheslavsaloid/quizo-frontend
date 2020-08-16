@@ -1,0 +1,5 @@
+<ng-container *ngIf="player">
+  <app-typography size="1" [data]="player.user.name"></app-typography>
+
+  <app-table [columns]="columns" [rows]="rows"></app-table>
+</ng-container>
