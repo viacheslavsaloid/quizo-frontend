@@ -13,10 +13,10 @@ export class ApiService {
   get = <T>(url: string, options?: object) =>
     this._httpClient.get<ApiResponse<T>>(this._url + url, options).toPromise();
 
-  post = async <T>(url: string, body: any, options?: object) =>
-    this._httpClient
-      .post<ApiResponse<T>>(this._url + url, await this._appImagesService.parseData(body), options)
-      .toPromise();
+  post = async <T>(url: string, body: any, options?: object) => {
+    console.log(this._url + url);
+    return this._httpClient.post<ApiResponse<T>>(this._url + url, body, options).toPromise();
+  };
 
   patch = async <T>(url: string, body: any, options?: object) =>
     this._httpClient

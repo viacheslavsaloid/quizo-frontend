@@ -3,7 +3,7 @@ import { CrudService } from 'src/app/utils/services/crud.service';
 import { ApiService, AppPopupService } from '../../core';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
-import { ADMIN_ROUTES } from 'src/app/routes/admin/auth.routes';
+import { ADMIN_ROUTES } from 'src/app/routes/admin/admin.routes';
 import {
   RegisterToGameArgs,
   RegisterToGameResponse,
@@ -14,6 +14,8 @@ import {
   HasAccessResponse,
   HasAccessArgs,
   Game,
+  GenerateTeammateTokenArgs,
+  GenerateTeammateTokenResponse,
 } from 'src/app/models/game';
 import { GamesState } from 'src/app/store/states/games';
 import { CLIENT_ROUTES } from 'src/app/routes/client/client.routes';
@@ -52,10 +54,23 @@ export class GamesService extends CrudService<Game> {
     }
   }
 
-  public async generateToken(args: GenerateTokenArgs): Promise<GenerateTokenResponse> {
+  public async generatePlayerToken(args: GenerateTokenArgs): Promise<GenerateTokenResponse> {
     try {
       const { id } = args;
-      const { data } = await this._apiService.post<{ token: string }>(this._apiEndpoint + id + '/generate', {});
+      const { data } = await this._apiService.post<{ token: string }>(this._apiEndpoint + id + '/generate-player', {});
+
+      return data;
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  public async generateTeammateToken(args: GenerateTeammateTokenArgs): Promise<GenerateTeammateTokenResponse> {
+    try {
+      const { id, userId } = args;
+      const { data } = await this._apiService.post<{ token: string }>(this._apiEndpoint + id + '/generate-teammate', {
+        userId,
+      });
 
       return data;
     } catch (err) {

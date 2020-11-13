@@ -5,7 +5,7 @@ import { NgOnDestory$ } from 'src/app/hooks';
 import { GameType, Question, Round } from 'src/app/models/game';
 import { Observable } from 'rxjs';
 import { Tab } from 'src/app/models/components/tabs';
-import { ADMIN_ROUTES } from 'src/app/routes/admin/auth.routes';
+import { ADMIN_ROUTES } from 'src/app/routes/admin/admin.routes';
 import { ListComponent, FormlyFormComponent } from 'src/app/components/shared';
 import { map, takeUntil } from 'rxjs/operators';
 

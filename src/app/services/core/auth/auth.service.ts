@@ -46,7 +46,7 @@ export class AuthService {
       const res = await this._apiService.get<User>(this._url + 'me');
       return res.data;
     } catch (err) {
-      console.error(err);
+      // console.error(err);
     }
   }
 

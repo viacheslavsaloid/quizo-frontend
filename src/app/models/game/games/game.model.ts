@@ -1,6 +1,7 @@
 import { GameType } from './game-type.enum';
 import { User } from '../../auth';
 import { Round } from '../round.model';
+import { Player } from '../player.model';
 
 export interface Game {
   id: string;
@@ -12,12 +13,7 @@ export interface Game {
   preview: string;
   type: GameType;
   rounds: Round[];
-  players: [
-    {
-      id: string;
-      access: boolean;
-      user: User;
-    }
-  ];
+  players: Player[];
   owner: User;
+  teammates: Player[];
 }

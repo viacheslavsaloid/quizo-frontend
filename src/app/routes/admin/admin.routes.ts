@@ -33,4 +33,8 @@ export const ADMIN_ROUTES = routesTypeDefinition({
     path: 'quizzes/:gameId/rounds/:roundId',
     fullPath: `/${BASE_URL}/quizzes/:gameId/rounds/:roundId`,
   },
+  QUIZ_PLAYER: {
+    path: 'quizzes/:gameId/players/:playerId',
+    fullPath: `/${BASE_URL}/quizzes/:gameId/players/:playerId`,
+  },
 });

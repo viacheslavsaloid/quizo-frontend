@@ -19,7 +19,7 @@ import { ColumnMode } from '@swimlane/ngx-datatable';
 })
 export class TableComponent {
   @Output() private paged = new EventEmitter();
-  @Output() private activaded = new EventEmitter();
+  @Output() private activated = new EventEmitter();
   @Output() private selected = new EventEmitter();
 
   @ContentChild('expandedRow') expandedRow: TemplateRef<ElementRef>;
@@ -53,7 +53,7 @@ export class TableComponent {
     this.paged.emit(e);
   }
   public onActivate(e) {
-    this.activaded.emit(e);
+    this.activated.emit(e);
   }
   public onSelect(e) {
     this.selected.emit(e);

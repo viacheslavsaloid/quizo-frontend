@@ -3,7 +3,7 @@ import { CrudService } from 'src/app/utils/services/crud.service';
 import { ApiService, AppPopupService } from '../../core';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
-import { ADMIN_ROUTES } from 'src/app/routes/admin/auth.routes';
+import { ADMIN_ROUTES } from 'src/app/routes/admin/admin.routes';
 import {
   RegisterToGameArgs,
   RegisterToGameResponse,
@@ -15,18 +15,19 @@ import {
   HasAccessArgs,
   Game,
 } from 'src/app/models/game';
-import { GamesState } from 'src/app/store/states/games';
 import { CLIENT_ROUTES } from 'src/app/routes/client/client.routes';
+import { Player } from '../../../models/game/player.model';
+import { PlayersState } from '../../../store/states/games/players.state';
 
 @Injectable()
-export class GamesService extends CrudService<Game> {
+export class PlayersService extends CrudService<Player> {
   constructor(
     protected _apiService: ApiService,
     protected _router: Router,
-    protected _gamesState: GamesState,
+    protected _playersState: PlayersState,
     protected _appPopupService: AppPopupService
   ) {
-    super(_apiService, _appPopupService, _gamesState, _router, environment.gamesEndpoint, '', 'game');
+    super(_apiService, _appPopupService, _playersState, _router, environment.playersEndpoint, '', 'player');
   }
 
   public async registerToGame(args: RegisterToGameArgs): Promise<RegisterToGameResponse> {

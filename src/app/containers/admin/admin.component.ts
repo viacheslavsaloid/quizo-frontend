@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService, AppConfigsService } from 'src/app/services/core';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/models/auth';
-import { ADMIN_ROUTES } from 'src/app/routes/admin/auth.routes';
+import { ADMIN_ROUTES } from 'src/app/routes/admin/admin.routes';
 import { AppRoute } from 'src/app/models/utils';
 import { TranslateService } from '@ngx-translate/core';
 import { takeUntil } from 'rxjs/operators';

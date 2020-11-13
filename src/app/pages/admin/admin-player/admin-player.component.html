@@ -1,5 +1,5 @@
 <ng-container *ngIf="player">
-  <app-typography size="1" [data]="player.user.name"></app-typography>
+  <app-typography size="1" [data]="player.user ? player.user.name : 'Не активирован'"></app-typography>
 
-  <app-table [columns]="columns" [rows]="rows"></app-table>
+  <app-tabs [tabs]="tabs"></app-tabs>
 </ng-container>

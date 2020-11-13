@@ -5,7 +5,7 @@ import { GamesService, RoundsService } from 'src/app/services/game';
 import { Observable, combineLatest } from 'rxjs';
 import { Tab } from 'src/app/models/components/tabs';
 import { AppNotificationService } from 'src/app/services/core';
-import { ADMIN_ROUTES } from 'src/app/routes/admin/auth.routes';
+import { ADMIN_ROUTES } from 'src/app/routes/admin/admin.routes';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { environment } from 'src/environments/environment';
 import { FormlyFormComponent, ListComponent, TableComponent, ActionsComponent } from 'src/app/components/shared';
@@ -70,8 +70,8 @@ export class AdminGameComponent implements OnInit {
     this._appNotificationsService.showSuccess('Доступ', 'Доступ успешно изменен');
   }
 
-  public async onTokenGenerate(game) {
-    const { token } = await this._gamesService.generateToken({ id: game.id });
+  public async generatePlayerToken(game) {
+    const { token } = await this._gamesService.generatePlayerToken({ id: game.id });
     this._clipboard.copy(token);
     this._appNotificationsService.showSuccess('Токен сгенерирован и скопирован');
   }
@@ -119,27 +119,34 @@ export class AdminGameComponent implements OnInit {
       name: 'PLAYERS',
       component: TableComponent,
       inputs: {
-        columns: [{ prop: 'token' }, { prop: 'name' }, { prop: 'hints' }, { prop: 'time' }],
-        rows: game.players.map((player) => {
-          const hints = player.history.filter((x) => x.action === 'hint').length;
-          const startDate = player.history.find((x) => x.action === 'start_game')?.date;
+        columns: [
+          { prop: 'token', name: 'Токен' },
+          { prop: 'name', name: 'Имя' },
+          { prop: 'hints', name: 'Подсказки' },
+          { prop: 'time', name: 'Время' },
+        ],
+        rows: game.players
+          .filter((player) => player.role.includes('leader'))
+          .map((player) => {
+            const hints = player.history.filter((x) => x.action === 'hint').length;
+            const startDate = player.history.find((x) => x.action === 'start_game')?.date;
 
-          const exitDate = player.history.find((x) => x.action === 'exit_game')?.date;
+            const exitDate = player.history.find((x) => x.action === 'exit_game')?.date;
 
-          const momentStartDate = moment(startDate);
-          const momentExitDate = moment(exitDate);
+            const momentStartDate = moment(startDate);
+            const momentExitDate = moment(exitDate);
 
-          const hours = momentExitDate.diff(momentStartDate, 'hours');
-          const minutes = momentExitDate.diff(momentStartDate, 'minutes') - hours * 60;
-          const seconds = momentExitDate.diff(momentStartDate, 'seconds') - minutes * 60;
+            const hours = momentExitDate.diff(momentStartDate, 'hours');
+            const minutes = momentExitDate.diff(momentStartDate, 'minutes') - hours * 60;
+            const seconds = momentExitDate.diff(momentStartDate, 'seconds') - minutes * 60;
 
-          return {
-            token: player.id,
-            name: player.user.name,
-            hints,
-            time: `${exitDate ? 'Finished' : 'Still in game'} ${hours}:${minutes}:${seconds}`,
-          };
-        }),
+            return {
+              token: player.id,
+              name: player.user?.name,
+              hints,
+              time: `${exitDate ? 'Finished' : 'Still in game'} ${hours}:${minutes}:${seconds}`,
+            };
+          }),
       },
       outputs: {
         selected: (row) => {
@@ -147,30 +154,23 @@ export class AdminGameComponent implements OnInit {
         },
         activated: (e) => {
           if (e.type === 'click') {
-            this._router.navigateByUrl(ADMIN_ROUTES.PLAYER.fullPath.replace(':id', e.row.token));
+            this._router.navigateByUrl(
+              ADMIN_ROUTES.QUIZ_PLAYER.fullPath.replace(':gameId', this.game.id).replace(':playerId', e.row.token)
+            );
           }
         },
       },
     };
 
     const gameTab = {
-      name: 'GAME',
+      name: 'ACTIONS',
       component: ActionsComponent,
       inputs: {
         actions: [
           {
-            name: 'Сгенерировать Токен',
-            color: 'warn',
-            onClick: () => this.onTokenGenerate(game),
-          },
-          {
-            name: 'Скопировать ссылку',
+            name: 'Сгенерировать Токен Игроку',
             color: 'primary',
-            onClick: () => this.onLinkCopy(game),
-          },
-          {
-            name: 'Перейти на страницу игры',
-            onClick: () => this._gamesService.navigateToItem(game),
+            onClick: () => this.generatePlayerToken(game),
           },
         ],
       },

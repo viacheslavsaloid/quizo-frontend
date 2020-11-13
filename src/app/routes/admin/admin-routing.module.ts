@@ -1,8 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from 'src/app/containers/admin/admin.component';
-import { AdminGamesComponent, AdminGameComponent, AdminRoundComponent } from 'src/app/pages/admin';
-import { ADMIN_ROUTES } from './auth.routes';
+import {
+  AdminGamesComponent,
+  AdminGameComponent,
+  AdminRoundComponent,
+  AdminPlayerComponent,
+} from 'src/app/pages/admin';
+import { ADMIN_ROUTES } from './admin.routes';
 import { GameType } from 'src/app/models/game';
 
 const routes: Routes = [
@@ -56,6 +61,10 @@ const routes: Routes = [
         data: {
           type: GameType.QUIZ,
         },
+      },
+      {
+        path: ADMIN_ROUTES.QUIZ_PLAYER.path,
+        component: AdminPlayerComponent,
       },
     ],
   },

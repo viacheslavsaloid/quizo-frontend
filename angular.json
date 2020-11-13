@@ -109,5 +109,8 @@
       }
     }
   },
-  "defaultProject": "quizo"
+  "defaultProject": "quizo",
+  "cli": {
+    "analytics": "15b2d0fb-3cfa-45e4-837c-6e21301f8ec3"
+  }
 }
