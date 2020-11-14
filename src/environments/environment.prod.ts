@@ -1,6 +1,6 @@
 import { getDomain } from 'src/app/utils/parsers';
 
-const serverUrl = 'https://quizo-backend-g4hh5.ondigitalocean.app/';
+const serverUrl = 'http://207.154.250.129/';
 
 const apiVersion = 'v1/';
 
