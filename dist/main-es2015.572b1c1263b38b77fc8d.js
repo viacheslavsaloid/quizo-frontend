@@ -10825,7 +10825,7 @@
       n.d(e, 'a', function () {
         return r;
       });
-      const i = 'https://quizo-backend-g4hh5.ondigitalocean.app/',
+      const i = 'http://207.154.250.129/',
         r = {
           production: !1,
           serverUrl: i,

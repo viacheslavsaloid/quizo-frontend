@@ -16724,7 +16724,7 @@ function _createClass2(t, e, n) {
       n.d(e, 'a', function () {
         return r;
       });
-      var i = 'https://quizo-backend-g4hh5.ondigitalocean.app/',
+      var i = 'http://207.154.250.129/',
         r = {
           production: !1,
           serverUrl: i,
