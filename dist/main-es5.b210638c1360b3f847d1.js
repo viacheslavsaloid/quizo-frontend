@@ -64736,11 +64736,19 @@ function _createClass2(t, e, n) {
                         for (;;)
                           switch ((i.prev = i.next)) {
                             case 0:
-                              return i.abrupt(
-                                'return',
-                                (console.log(this._url + t), this._httpClient.post(this._url + t, e, n).toPromise())
+                              return (
+                                (i.t0 = this._httpClient),
+                                (i.t1 = this._url + t),
+                                (i.next = 4),
+                                this._appImagesService.parseData(e)
                               );
-                            case 1:
+                            case 4:
+                              return (
+                                (i.t2 = i.sent),
+                                (i.t3 = n),
+                                i.abrupt('return', i.t0.post.call(i.t0, i.t1, i.t2, i.t3).toPromise())
+                              );
+                            case 7:
                             case 'end':
                               return i.stop();
                           }

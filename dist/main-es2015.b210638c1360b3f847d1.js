@@ -50218,7 +50218,9 @@
                 (this.get = (t, e) => this._httpClient.get(this._url + t, e).toPromise()),
                 (this.post = (t, e, n) =>
                   Object(i.a)(this, void 0, void 0, function* () {
-                    return console.log(this._url + t), this._httpClient.post(this._url + t, e, n).toPromise();
+                    return this._httpClient
+                      .post(this._url + t, yield this._appImagesService.parseData(e), n)
+                      .toPromise();
                   })),
                 (this.patch = (t, e, n) =>
                   Object(i.a)(this, void 0, void 0, function* () {

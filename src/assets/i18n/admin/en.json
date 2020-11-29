@@ -3,7 +3,8 @@
     "APP": "Quizo",
     "QUESTS": "Quests",
     "QUIZZES": "Quizzes",
-    "EXIT": "Exit"
+    "EXIT": "Exit",
+    "TEMPLATES": "Templates"
   },
   "TABS": {
     "FORM": "Form",
@@ -19,7 +20,9 @@
     "QUESTIONS": "Questions",
     "ANSWER": "Answer",
     "HINTS": "Hints",
-    "START": "Start"
+    "START": "Start",
+    "UPLOAD_TEMPLATE": "Upload Template",
+    "UPLOADED_TEMPLATES": "Uploaded Templates"
   },
   "FORM": {
     "FIRST_NAME": "Name",
@@ -39,7 +42,8 @@
     "PRIVATE": "Private",
     "MEDIAS": "Медиа",
     "MEDIAS_PLACEHOLDER": "Введите медиа",
-    "ACTIVE": "Active"
+    "ACTIVE": "Active",
+    "FILE": "File"
   },
   "MODAL": {
     "QUEST": "Quest",

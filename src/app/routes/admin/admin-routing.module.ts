@@ -6,6 +6,7 @@ import {
   AdminGameComponent,
   AdminRoundComponent,
   AdminPlayerComponent,
+  AdminTemplatesComponent,
 } from 'src/app/pages/admin';
 import { ADMIN_ROUTES } from './admin.routes';
 import { GameType } from 'src/app/models/game';
@@ -65,6 +66,10 @@ const routes: Routes = [
       {
         path: ADMIN_ROUTES.QUIZ_PLAYER.path,
         component: AdminPlayerComponent,
+      },
+      {
+        path: ADMIN_ROUTES.TEMPLATES.path,
+        component: AdminTemplatesComponent,
       },
     ],
   },

@@ -13,6 +13,7 @@ export class AppFormlyService {
     description: 'textarea',
     comment: 'textarea',
     image: 'file',
+    file: 'file',
     icon: 'file',
     logo: 'file',
     preview: 'file',
