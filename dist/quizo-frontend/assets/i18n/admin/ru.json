@@ -1,0 +1,56 @@
+{
+  "SIDENAV": {
+    "APP": "Quizo",
+    "QUESTS": "Квесты",
+    "QUIZZES": "Квизы",
+    "EXIT": "Выход",
+    "TEMPLATES": "Шаблоны"
+  },
+  "TABS": {
+    "FORM": "Форма",
+    "LIST": "Список",
+    "ROUNDS": "Раунды",
+    "MESSAGES": "Сообщения",
+    "GAME": "Игры",
+    "PLAYERS": "Игроки",
+    "ACTIONS": "Действия",
+    "HISTORY": "История",
+    "TEAM": "Команда",
+    "SETTINGS": "Настройки",
+    "QUESTIONS": "Вопросы",
+    "ANSWER": "Ответ",
+    "HINTS": "Подсказки",
+    "START": "Запуск",
+    "UPLOAD_TEMPLATE": "Загрузить Шаблон",
+    "UPLOADED_TEMPLATES": "Загруженные Шаблоны"
+  },
+  "FORM": {
+    "FIRST_NAME": "Имя",
+    "FIRST_NAME_PLACEHOLDER": "Введите имя",
+    "LAST_NAME": "Фамилия",
+    "LAST_NAME_PLACEHOLDER": "Введите фамилию",
+    "TITLE": "Название",
+    "TITLE_PLACEHOLDER": "Введите Название",
+    "DESCRIPTION": "Описание",
+    "DESCRIPTION_PLACEHOLDER": "Введите Описание",
+    "ANSWER": "Отвте",
+    "ANSWER_PLACEHOLDER": "Введите ответ",
+    "HINTS": "Подсказки",
+    "HINTS_PLACEHOLDER": "Введите Подсказки",
+    "ACTIVE": "Активная",
+    "WRONGS": "Ошибки",
+    "WRONGS_PLACEHOLDER": "Введите Ошибки",
+    "MEDIAS": "Медиа",
+    "MEDIAS_PLACEHOLDER": "Введите медиа",
+    "PRIVATE": "Приватная",
+    "FILE": "Файл"
+  },
+  "MODAL": {
+    "QUEST": "Квест",
+    "QUIZ": "Квиз",
+    "QUEST_ROUND": "Квест Раунд",
+    "QUIZ_ROUND": "Квиз Раунд",
+    "QUEST_ROUND_QUESTION": "Квест Раунд Вопрос",
+    "QUIZ_ROUND_QUESTION": "Квиз Раунд Вопрос"
+  }
+}
