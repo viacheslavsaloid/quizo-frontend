@@ -1,4 +1,4 @@
-import { AUTH_ROUTES } from 'src/app/routes/auth/auth.routes';
+import { AUTH_ROUTES } from '../../../../src/app/routes/auth/auth.routes';
 
 const SIGN_IN_LINKS = [
   {

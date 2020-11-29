@@ -1,0 +1,15 @@
+@import 'node_modules/ngx-toastr/toastr.css';
+@import 'node_modules/@swimlane/ngx-datatable/index.css';
+@import 'node_modules/@swimlane/ngx-datatable/themes/material';
+@import 'node_modules/@swimlane/ngx-datatable/assets/icons.css';
+
+@import 'dist/assets/styles/theme';
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
